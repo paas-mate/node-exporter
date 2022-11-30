@@ -1,15 +1,15 @@
-FROM ttbb/base
+FROM shoothzj/base
 
-WORKDIR /opt/sh
+WORKDIR /opt
 
-ENV NODE_EXPORTER_HOME /opt/sh/node_exporter
+ENV NODE_EXPORTER_HOME /opt/node_exporter
 
-ARG version=1.3.1
+ARG version=1.5.0
 ARG TARGETARCH
 
 RUN wget https://github.com/prometheus/node_exporter/releases/download/v$version/node_exporter-$version.linux-$TARGETARCH.tar.gz  && \
-mkdir -p /opt/sh/node_exporter && \
-tar -xf node_exporter-$version.linux-$TARGETARCH.tar.gz -C /opt/sh/node_exporter --strip-components 1 && \
+mkdir -p /opt/node_exporter && \
+tar -xf node_exporter-$version.linux-$TARGETARCH.tar.gz -C /opt/node_exporter --strip-components 1 && \
 rm -rf node_exporter-$version.linux-$TARGETARCH.tar.gz
 
-WORKDIR /opt/sh/node_exporter
+WORKDIR /opt/node_exporter
